@@ -1,0 +1,28 @@
+{
+  "name": "members-only",
+  "version": "1.0.0",
+  "description": "Simple Chat web app that utilizes the use of Authentication with NodeJS Passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danvictorgithub/Members-Only.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Danvictorgithub/Members-Only/issues"
+  },
+  "homepage": "https://github.com/Danvictorgithub/Members-Only#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}
