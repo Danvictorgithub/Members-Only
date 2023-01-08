@@ -6,7 +6,12 @@
 			<h1>Secret Group</h1></div>
 	</div>
 	<div class="container-home">
-		<div class="sign-up-modal">
+
+		<% if (typeof user != 'undefined') {%>
+		    <h1>WELCOME BACK <%= user.username %></h1>
+		    <a href="/log-out">LOG OUT</a>
+		<% } else { %>
+		   <div class="sign-up-modal">
 			<div class="modalContainer">
 				<h1>Sign Up</h1>
 				<form action="/sign-up" method="POST">
@@ -69,6 +74,9 @@
 			<button class="homebtn sign-up">Sign-Up</button>
 			<button class="homebtn log-in">Log-In</button>
 		</div>
+		<%}%>
+
+		
 	</div>
 
 </body>

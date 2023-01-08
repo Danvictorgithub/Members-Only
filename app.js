@@ -7,7 +7,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require("mongoose");
 const logger = require('morgan');
 const createError = require("http-errors");
-
+const bcrypt = require("bcryptjs");
+const User = require('./models/user');
 const indexRouter = require("./routes/index");
 
 // Mongoose Setup
@@ -19,9 +20,6 @@ db.on("error",console.error.bind(console,"mongo connection error"));
 const app = express();
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine", "ejs");
-
-//PassPort JS Config
-
 
 // Middlewares
 app.use(session({secret:process.env.SECRET_KEY, resave:false, saveUnititialized: true}));
