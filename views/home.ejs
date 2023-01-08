@@ -23,6 +23,8 @@
 					</label>
 					<input type="password" name="confirmpassword">
 					<button class="submitbtn" type="submit">Submit</button>
+				</form>
+				<div class="errors">
 					<% if (typeof errors != 'undefined') {%>
 						<ul>
 							<% errors.forEach((error) => { %>
@@ -32,7 +34,7 @@
 							<%})%>
 						</ul>
 					<% } %>
-				</form>
+				</div>
 			</div>
 		</div>
 		<div class="log-in-modal">
@@ -48,6 +50,8 @@
 					</label>
 					<input type="password" name="password"></input>
 					<button class="submitbtn" type="submit">Submit</button>
+				</form>
+				<div class="errors">
 					<% if (typeof errors != 'undefined') {%>
 						<ul>
 							<% errors.forEach((error) => { %>
@@ -57,7 +61,7 @@
 							<%})%>
 						</ul>
 					<% } %>
-				</form>
+				</div>
 			</div>
 		</div>
 		<h1 class="homeContent">Secret Group Members Only</h1>
