@@ -21,8 +21,17 @@
 					<label for="confirmpassword">
 						Confirm Password
 					</label>
-					<input type="confirmpassword" name="confirmpassword">
+					<input type="password" name="confirmpassword">
 					<button class="submitbtn" type="submit">Submit</button>
+					<% if (typeof errors != 'undefined') {%>
+						<ul>
+							<% errors.forEach((error) => { %>
+								<li>
+									<%= error.msg %>
+								</li>
+							<%})%>
+						</ul>
+					<% } %>
 				</form>
 			</div>
 		</div>
@@ -39,6 +48,15 @@
 					</label>
 					<input type="password" name="password"></input>
 					<button class="submitbtn" type="submit">Submit</button>
+					<% if (typeof errors != 'undefined') {%>
+						<ul>
+							<% errors.forEach((error) => { %>
+								<li>
+									<%= error.msg %>
+								</li>
+							<%})%>
+						</ul>
+					<% } %>
 				</form>
 			</div>
 		</div>

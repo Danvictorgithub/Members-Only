@@ -20,6 +20,9 @@ const app = express();
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine", "ejs");
 
+//PassPort JS Config
+
+
 // Middlewares
 app.use(session({secret:process.env.SECRET_KEY, resave:false, saveUnititialized: true}));
 app.use(passport.initialize());
