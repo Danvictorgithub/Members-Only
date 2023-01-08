@@ -35,17 +35,105 @@ body {
 .headerGroup img{
 	height: 75px;
 }
-.homeContent {
-	font-size: 3rem;
-	transform:scale(1.2,2);
-}
-.container {
+.container-home {
 	flex: 1 1 auto;
 /*	background: linear-gradient(60deg,#000000,#454545);*/
-	background-color: black;
+	background-image: url("/images/bghome.jpg") ;
 	color: white;
 	display:flex;
 	flex-direction:column;
 	justify-content: center;
 	align-items:center;
+	background-size:cover;
+	background-position: center;
+}
+.homeContent {
+	text-align: center;
+	font-size: 3rem;
+	text-shadow: black 2px 2px 2px;
+/*	transform:scale(1.2,1.9);*/
+}
+.btngroup {
+	display:flex;
+	gap: 24px;
+}
+.homebtn {
+	flex: 1 1 0;
+	background-color:rgba(0, 0, 0, 0.5);
+	font-size:2rem;
+	font-weight: 800;
+	border: 2px solid transparent;
+	padding: 5px 25px;
+	width: 200px;
+	height: 50px;
+	text-shadow: black 2px 2px 2px;
+	color:white;
+}
+.homebtn:hover {
+	background-color:rgba(255, 255, 255, 0.5);
+}
+.homebtn:active {
+	background-color:rgba(0, 0, 0, 0.5);
+	color:black;
+}
+.sign-up-modal {
+	width: 100%;
+	height:90%;
+	background-color:rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 1;
+	display:none;
+	padding:1vw;
+ }
+ .log-in-modal {
+	width: 100%;
+	height:90%;
+	background-color:rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 1;
+	display:none;
+	padding:1vw;
+ }
+ .on {
+ 	display: block;
+ }
+ .modalContainer {
+/* 	position: absolute;*/
+	border-radius: 36px;
+	height: calc(75vh);
+	max-width: 400px;
+ 	margin: auto;
+ 	background-color:white;
+ 	color:black;
+ 	display:flex;
+ 	flex-direction:column;
+ 	align-items:center;
+ 	padding: 36px;
+ 	gap:24px;
+ }
+.modalContainer form > *{
+/*	text-align: center;*/
+	font-size: 1.5rem;
+	font-weight: 600;
+	display:block;
+	margin-bottom: 12px;
+}
+.submitbtn {
+/*	flex: 1 1 0;*/
+	background-color:rgba(0, 0, 0, 1);
+	font-size:2rem;
+	font-weight: 800;
+	border: 2px solid transparent;
+	padding: 5px 25px;
+	width: 100%;
+	color:white;
+}
+.submitbtn:hover {
+	border: 2px solid black;
+	background-color: white;
+	color:black;
+}
+.submitbtn:active {
+	background-color:black;
+	color:white;
 }
