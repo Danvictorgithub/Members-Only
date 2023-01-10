@@ -1,0 +1,39 @@
+<%- include('head') -%>
+<body>
+	<div class="header">
+		<div class="headerGroup">
+			<img src="/images/favicon-white.png" alt="logo">
+			<h1>Secret Group</h1>
+		</div>
+		<div class="user-opt">
+			<ul>
+				<li>
+				 <a href="/user">User</a> </li>
+				<li><a href="/log-out">Log-Out</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container-user">
+		<div class="wrapper">
+			<div class="userInfo">
+				<h1>User Info</h1>
+				<hr>
+				<div class="userDescription">
+					<h2>Username: <%=user.username%></h1>
+					<h2>Member Status: <%=user.member_status%></h2>
+					<h2>Date Joined: <%=user.join_date%></h2>
+					<form action="/secret-code" method="POST">
+						<label for="secreteode">Enter Secret-Code:</label>
+						<input type="text" name="secretcode">
+						<button class="submitbtn" type="submit">Submit</button>
+					</form>
+					<% if(typeof errors != 'undefined') {%>
+						<% errors.forEach( (error)=>{ %>
+							<h3><%=error.msg%></h3>
+						<%});%>
+					<%}%>
+				</div>		
+			</div>
+		</div>
+	</div>
+</body>

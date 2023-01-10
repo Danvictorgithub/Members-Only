@@ -54,7 +54,7 @@ passport.deserializeUser((id,done)=> {
 });
 
 // Middlewares
-app.use(session({secret:process.env.SECRET_KEY, resave:false, saveUnititialized: true}));
+app.use(session({secret:process.env.SECRET_KEY,resave:false,saveUninitialized:true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger('dev'));

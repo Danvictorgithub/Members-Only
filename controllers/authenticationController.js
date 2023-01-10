@@ -52,8 +52,8 @@ exports.sign_up_post = [
 ];
 // PassportJS Automatic Login Session
 exports.log_in_post = passport.authenticate('local',{
-	successRedirect:"/",
-	failureRedirect:"/failure"
+	successRedirect:"/thread",
+	failureRedirect:"/"
 });
 exports.log_out_post = (req,res,next)=> {
 	req.logout((err)=> {
