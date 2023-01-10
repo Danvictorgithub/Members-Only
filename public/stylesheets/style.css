@@ -152,3 +152,20 @@ body {
 	flex: 1 1 auto;
 	background-color: black;
 }
+.wrapper {
+	margin-inline: auto;
+	max-width: 1000px;
+}
+.chatPost {
+	padding: 24px;
+	background-color: white;
+	border-radius: 16px;
+}
+.chatPost > * {
+	margin-bottom: 4px;
+}
+.userPost {
+	margin-top:12px;
+	display: flex;
+	justify-content: space-between;
+}
