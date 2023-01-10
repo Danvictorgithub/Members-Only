@@ -50,3 +50,15 @@ exports.sign_up_post = [
 		
 	}
 ];
+exports.log_in_post = passport.authenticate('local',{
+	successRedirect:"/",
+	failureRedirect:"/failure"
+});
+exports.log_out_post = (req,res,next)=> {
+	req.logout((err)=> {
+		if (err) {
+			return next(err);
+		}
+		res.redirect("/");
+	});
+};

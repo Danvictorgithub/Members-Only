@@ -21,6 +21,38 @@ const app = express();
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine", "ejs");
 
+//PassportJS Setup
+passport.use(new LocalStrategy((username,password,done)=>{
+	User.findOne({username:username},(err,user)=> {
+		if (err) {
+			return done(err);
+		}
+		if (!user) {
+			return done(null,false,{message:"Incorrect Username"});
+		}
+		bcrypt.compare(password,user.password,(err,res)=> {
+			if (err) {
+				return done(err);
+			}
+			if (res) {
+				return done(null,user);
+			}
+			else {
+				return done(null,false, {message:"Incorrect Password"});
+			}
+		});
+	});
+}));
+
+passport.serializeUser((user,done)=> {
+	done(null,user.id);
+});
+passport.deserializeUser((id,done)=> {
+	User.findById(id, (err,user)=>{
+		return done(err,user);
+	});
+});
+
 // Middlewares
 app.use(session({secret:process.env.SECRET_KEY, resave:false, saveUnititialized: true}));
 app.use(passport.initialize());
@@ -28,6 +60,12 @@ app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
+//
+app.use((req,res,next) => {
+	res.locals.currentUser = req.user;
+	next();
+});
 // Setup Main Routers
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/",indexRouter);
