@@ -28,6 +28,17 @@ exports.secret_key = [
 			res.redirect("/user");
 			return;
 		}
-		console.log("success");
+		const eliteUser = new User({
+			_id:req.user.id,
+			date_joined:req.user.date_joined,
+			admin:req.user.admin,
+			member_status:"Elite",
+		});
+		User.findByIdAndUpdate(req.user.id,eliteUser,{},(err,user)=>{
+			if(err) {
+				return next(err);
+			}
+			res.redirect("/user");
+		});
 	}
 ];

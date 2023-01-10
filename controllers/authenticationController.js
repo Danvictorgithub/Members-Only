@@ -55,6 +55,7 @@ exports.log_in_post = passport.authenticate('local',{
 	successRedirect:"/thread",
 	failureRedirect:"/"
 });
+// Log-out Session
 exports.log_out_post = (req,res,next)=> {
 	req.logout((err)=> {
 		if (err) {

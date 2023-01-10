@@ -30,6 +30,7 @@ passport.use(new LocalStrategy((username,password,done)=>{
 		if (!user) {
 			return done(null,false,{message:"Incorrect Username"});
 		}
+		// Password Encryption protected comparison
 		bcrypt.compare(password,user.password,(err,res)=> {
 			if (err) {
 				return done(err);
