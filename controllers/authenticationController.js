@@ -50,6 +50,7 @@ exports.sign_up_post = [
 		
 	}
 ];
+// PassportJS Automatic Login Session
 exports.log_in_post = passport.authenticate('local',{
 	successRedirect:"/",
 	failureRedirect:"/failure"

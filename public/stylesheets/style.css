@@ -15,7 +15,6 @@ body {
 	min-width: 100%;
 	display:flex;
 	flex-direction: column;
-	overflow: hidden;
 
 }
 .header {
@@ -77,21 +76,19 @@ body {
 }
 .sign-up-modal {
 	width: 100%;
-	height:90%;
+	height:calc(100% - 80px);
 	background-color:rgba(0,0,0,0.5);
 	position: absolute;
-	z-index: 1;
+	z-index: 0;
 	display:none;
-	padding:1vw;
  }
  .log-in-modal {
 	width: 100%;
-	height:90%;
+	height:calc(100% - 80px);
 	background-color:rgba(0,0,0,0.5);
 	position: absolute;
 	z-index: 1;
 	display:none;
-	padding:1vw;
  }
  .on {
  	display: block;
@@ -156,10 +153,19 @@ body {
 	margin-inline: auto;
 	max-width: 1000px;
 }
+img[src="/images/masquerade.png"] {
+	margin-top: 24px;
+	height: 200px;
+	filter:invert(200%);
+	display: table;
+	margin-inline: auto;
+}
 .chatPost {
 	padding: 24px;
 	background-color: white;
 	border-radius: 16px;
+	margin-block: 12px;
+	margin-inline: 2%;
 }
 .chatPost > * {
 	margin-bottom: 4px;
@@ -168,4 +174,10 @@ body {
 	margin-top:12px;
 	display: flex;
 	justify-content: space-between;
+}
+.header-chat {
+	color:white;
+	text-align: center;
+	font-size: 3rem;
+	margin-inline: 2%;
 }
