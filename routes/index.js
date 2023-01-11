@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authenticationController = require('../controllers/authenticationController');
 const membersChatController = require('../controllers/membersChatController');
-router.get("/", (req,res,next) => {
-	res.render("home",{ user: req.user });
-});
+router.get("/", authenticationController.home_get);
 // Authentication Controller
 router.post("/sign-up",authenticationController.sign_up_post);
 router.post("/log-in",authenticationController.log_in_post);

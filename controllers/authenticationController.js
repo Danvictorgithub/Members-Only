@@ -6,16 +6,17 @@ const passport = require('passport');
 exports.home_get = (req,res,next) => {
 	if (req.user != undefined) {
 		User.findOne({username:req.user.username,password:req.user.password}).exec((err,user)=>{
-		if (err) {
-			return next(err);
-		}
-		if (!user) { //Protects Invalid Injections
-			res.render("home");
-			delete req.user;
-			return;
-		}
-		res.redirect("/thread");
- 	});
+			if (err) {
+				return next(err);
+			}
+			if (user == undefined) {
+				delete req.user; //Protects Invalid Injections
+				res.render("home");
+				return;
+			}
+			res.redirect("/thread");
+ 		});
+ 		return;
 	}
 	res.render("home");
 };
