@@ -2,6 +2,23 @@ const {body, validationResult} = require('express-validator');
 const User = require("../models/user");
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+
+exports.home_get = (req,res,next) => {
+	if (req.user != undefined) {
+		User.findOne({username:req.user.username,password:req.user.password}).exec((err,user)=>{
+		if (err) {
+			return next(err);
+		}
+		if (!user) { //Protects Invalid Injections
+			res.render("home");
+			delete req.user;
+			return;
+		}
+		res.redirect("/thread");
+ 	});
+	}
+	res.render("home");
+};
 exports.sign_up_post = [
 	//sanitize sign-up
 	body("username","Username character must be atleast 1 or less than 25 characters").trim().isLength({min:1,max:25}).escape(),
