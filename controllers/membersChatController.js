@@ -2,7 +2,27 @@ require("dotenv").config();
 const User = require('../models/user');
 const {body,validationResult} = require('express-validator');
 exports.members_chat_home = (req,res,next) => {
-	res.render("memberschat");
+	if (req.user == undefined) {
+		const error = new Error("No Login Session");
+		error.status = 404;
+		return next(error);
+	}
+	User.findOne({username:req.user.username,password:req.user.password}).exec((err,user)=>{
+		if (err) {
+			return next(err);
+		}
+		if (!user) {
+			const error = new Error("Invalid Login Session");
+			error.status = 404;
+			return next(error);
+		}
+		if (user.member_status != 'Elite') {
+			res.render("bystander");
+			return;
+		}
+		res.render("memberschat");
+ 	});
+	// res.render("memberschat");
 };
 exports.user_info = (req,res,next)=> {
 	if (req.user == undefined) {
