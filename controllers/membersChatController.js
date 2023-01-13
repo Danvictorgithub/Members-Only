@@ -62,3 +62,6 @@ exports.secret_key = [
 		});
 	}
 ];
+exports.add_post = [
+	body("title"),body("content")
+];

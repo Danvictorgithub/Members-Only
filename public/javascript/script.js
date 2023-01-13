@@ -1,6 +1,6 @@
 // console.log("Hello World");
 // Modal Set Up
-const modalbtns = document.querySelectorAll(".homebtn");
+const modalbtns = document.querySelectorAll(".modalbtn");
 
 modalbtns.forEach(btn => {
 	btn.addEventListener("click", (e)=> {
