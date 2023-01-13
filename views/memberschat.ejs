@@ -14,47 +14,83 @@
 		</div>
 	</div>
 	<div class="container-chat">
-		<div class="create-post-modal">
-			<div class="modalContainer">
-				<h1>Create Post</h1>
-				<form action="/add-post" method="POST">
-					<label for="title">
-						Title
-					</label>
-					<input type="text" name="title"></input>
-					<label for="content">
-						Content
-					</label>
-					<textarea rows="6.5" cols="19"></textarea>
-					<button class="submitbtn" type="submit">Submit</button>
-				</form>
-				<div class="errors">
-					<% if (typeof errors != 'undefined') {%>
-						<ul>
-							<% errors.forEach((error) => { %>
-								<li>
-									<%= error.msg %>
-								</li>
-							<%})%>
-						</ul>
-					<% } %>
+		<%if(typeof errors != 'undefined'){%>
+			<div class="create-post-modal modal on ">
+				<div class="modalContainer">
+					<h1>Create Post</h1>
+					<form action="/add-post" method="POST">
+						<label for="title">
+							Title
+						</label>
+						<input type="text" name="title"></input>
+						<label for="content">
+							Content
+						</label>
+						<textarea rows="6.5" cols="19"></textarea>
+						<button class="submitbtn" type="submit">Submit</button>
+					</form>
+					<div class="errors">
+						<% if (typeof errors != 'undefined') {%>
+							<ul>
+								<% errors.forEach((error) => { %>
+									<li>
+										<%= error.msg %>
+									</li>
+								<%})%>
+							</ul>
+						<% } %>
+					</div>
 				</div>
 			</div>
-		</div>
+		<%} else {%>
+			<div class="create-post-modal modal">
+				<div class="modalContainer">
+					<h1>Create Post</h1>
+					<form action="/add-post" method="POST">
+						<label for="title">
+							Title
+						</label>
+						<input type="text" name="title"></input>
+						<label for="content">
+							Content
+						</label>
+						<textarea rows="6.5" cols="19" name="content"></textarea>
+						<button class="submitbtn" type="submit">Submit</button>
+					</form>
+					<div class="errors">
+						<% if (typeof errors != 'undefined') {%>
+							<ul>
+								<% errors.forEach((error) => { %>
+									<li>
+										<%= error.msg %>
+									</li>
+								<%})%>
+							</ul>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		<%}%>
 		<div class="wrapper">
 			<img src="/images/masquerade.png">
 			<h1 class="header-chat">Anonymous Posting</h1>
 			<button class="modalbtn create-post addPost">+</button>
-			<%for(let i = 0; i < 5; i++) {%>
+			<% messages.forEach((msg) => { %>
 				<div class="chatPost">
-					<h1>Some Title</h1>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In eius culpa voluptate sed aperiam odio placeat hic, illum voluptatem fugiat atque cum ipsa sequi aliquid reprehenderit molestias natus eveniet exercitationem.</p>
+					<h1><%=msg.title%></h1>
+					<p><%=msg.content%></p>
 					<div class="userPost">
-						<p><em>Posted on: 01/10/2023</em></p>
-						<p><b>-Anonymous</b></p>
+						<p><em>Posted on: <%=msg.formatted_date_posted%></em></p>
+						<p><b>-<%=msg.user.username%></b></p>
 					</div>
+					<%if (1) {%>
+					<form action="delete-post" method="POST">
+						<input type="hidden" name="postid" value=<%=msg._id%>>
+						<button class="delbtn">Delete</button>
+					</form>
+					<%}%>
 				</div>
-			<%}%>
+			<%})%>
 		</div>
 	</div>
 </body>
