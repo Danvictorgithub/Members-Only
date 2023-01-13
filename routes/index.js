@@ -11,4 +11,6 @@ router.get("/log-out",authenticationController.log_out_post);
 router.get("/thread",membersChatController.members_chat_home);
 router.get("/user",membersChatController.user_info);
 router.post("/secret-code",membersChatController.secret_key);
+router.post("/add-post",membersChatController.add_post);
+router.post("/delete-post",membersChatController.delete_post);
 module.exports = router;

@@ -3,7 +3,9 @@
 	<div class="header">
 		<div class="headerGroup">
 			<img src="/images/favicon-white.png" alt="logo">
-			<h1>Secret Group</h1>
+			<h1>
+				<a href="/thread">Secret Group</a>
+			</h1>
 		</div>
 		<div class="user-opt">
 			<ul>
@@ -83,7 +85,7 @@
 						<p><em>Posted on: <%=msg.formatted_date_posted%></em></p>
 						<p><b>-<%=msg.user.username%></b></p>
 					</div>
-					<%if (1) {%>
+					<%if (currentUser.admin) {%>
 					<form action="delete-post" method="POST">
 						<input type="hidden" name="postid" value=<%=msg._id%>>
 						<button class="delbtn">Delete</button>
