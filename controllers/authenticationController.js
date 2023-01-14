@@ -43,7 +43,6 @@ exports.sign_up_post = [
 				return next(err);
 			}
 			if (result != null) {
-				console.log(result);
 				const error = [{msg:"This user already exist"}];
 				res.render("home",{errors:error});
 				return;
